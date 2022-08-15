@@ -105,7 +105,7 @@ body{
     height: 100px;
 }
 
-/* about */
+/* about presentation*/
 .presentation{
     padding-top: 0;
     text-align: center;
@@ -123,6 +123,7 @@ body{
 .presentation__copy{
     width: 80%;
     margin: 0 auto;
+    font-size: 1.2rem;
 }
 
 .presentation__cta{
@@ -134,4 +135,34 @@ body{
     padding: var(--botton-padding);
     border-radius: 40px;
     font-weight: bold;
+}
+/* about habilidades */
+.about{
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;   
+    row-gap: 80px;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.about__img{
+    text-align: center;
+}
+
+.about__img--left{
+    text-align: left;
+}
+
+.about__picture{
+    max-width: 80%;
+}
+
+.about__paragraph{
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: 1.2rem;
+
 }
