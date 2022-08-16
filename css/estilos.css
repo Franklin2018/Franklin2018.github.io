@@ -173,7 +173,7 @@ body{
 
 .project__grid{
     display: grid;
-    height: 350px;
+    height: 500px;
     grid-template-areas: 
     "img1 img1 img2 img3"
     "img1 img1 img4 img5";
@@ -235,7 +235,53 @@ body{
     margin-top: 10px;
     font-size: 30px;
 }
-/* 
-img{
-    width: 100%;
-} */
+
+/* footer */
+
+footer{
+    background: var(--color-primary);   
+}
+
+.footer__grid{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer__title{
+    font-weight: 400;
+    color: #ffff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;    
+}
+
+.footer__icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+ .footer__container-icons{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    color: #ffff;
+    text-align: center;
+    /* border: 1px solid #ffff; */
+    border-radius: 50%;
+ }
+
+ .footer__icon{
+    color: inherit;
+    font-size: 50px;
+    text-decoration: none;
+ }
+
+ .fa-brands.footer__icon{
+    line-height: 60px;
+ }
+
+ .nav__items--footer{
+    font-size: 1.2rem;
+    font-weight: bold;
+ }
