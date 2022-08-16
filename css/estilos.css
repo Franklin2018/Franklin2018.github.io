@@ -285,3 +285,41 @@ footer{
     font-size: 1.2rem;
     font-weight: bold;
  }
+
+ /* Responsive desing */
+
+ @media screen and (max-width: 800px){
+    :root{
+        --boton-padding: 18px 40px;
+    }
+
+    .nav{
+        justify-content: space-around;
+    }
+    
+    .nav__items--cta{
+        border: none;
+    }
+    .nav__items{
+        font-weight: 400;
+        border-bottom: 1px solid #ffff;
+        margin-right: 0;
+    }
+
+    .nav__items--footer{
+        border:none;
+    }
+
+    .hero__texts{
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .hero__title{
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle{
+        font-size: 1.5rem;
+    }
+ }
