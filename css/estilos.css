@@ -344,4 +344,22 @@ footer{
     .about__texts:last-child{
         grid-row: 3/4;
     }
+
+    /* my projects */
+
+    .project__grid{
+        grid-template-areas: 
+        "img1 img1 img2 img2"
+        "img1 img1 img3 img3"
+        "img4 img4 img5 img5"
+        ;
+    }
+
+    .footer__grid{
+        grid-template-columns: 1fr;      
+    }
+
+    .footer__contact{
+        grid-row: 1/2;
+    }
  }
