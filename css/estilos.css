@@ -322,4 +322,26 @@ footer{
     .hero__subtitle{
         font-size: 1.5rem;
     }
+
+    /* about */
+
+    .presentation__copy{
+        width: 100%;
+    }
+
+    .about{
+        grid-template-columns: 1fr;
+    }
+
+    .about.container{
+        padding-top: 30px;
+    }
+
+    .about__img--left{
+        text-align: center;
+    }
+
+    .about__texts:last-child{
+        grid-row: 3/4;
+    }
  }
