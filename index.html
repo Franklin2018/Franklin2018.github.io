@@ -6,12 +6,24 @@
     <title>Portafolio</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilos.css">
+
+    <title>Enviar Email con Bootstrap Modal Popup Ajax & PHP</title>
+    <!-- Último minificado bootstrap css -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- jQuery libraria incluida -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Último minificado bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .btn-success{margin: 10px;}
+    </style>
+
 </head>
 <body>
     <header class="hero">
         <div class="container">
             <nav class="nav">
-                <a class="nav__items nav__items--cta" href="#" > Contactame</a>
+                <a class="nav__items nav__items--cta" href="#"> Contactame</a>
                 <a class="nav__items" href="#sobreMi" >Sobre mi</a>
                 <a class="nav__items" href="#projects" >Proyectos</a>
             </nav>
@@ -20,13 +32,57 @@
                 <div class="hero__texts">
                     <h1 class="hero__title">Hola soy Franklin Omar - Developer</h1>
                     <h2 class="hero__subtitle">"Nunca pares de aprender"</h2>
-                    <a class="hero__cta" href="#">Contactame ahora</a>
+                    <!-- <a class="hero__cta" href="#" data-toggle="modal" data-target="#modalForm">Contactame ahora</a> -->
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                        Contactame ahora
+                    </button>
                 </div>
             </section>
         </div>
         <div class="hero__wave" style="overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
     </header>
 
+       
+<!-- Modal -->
+<div class="modal fade" id="modalForm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Cabecera -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Formulario de Contacto</h4>
+            </div>
+            
+            <!-- Modal Cuerpo contenido -->
+            <div class="modal-body">
+                <p class="statusMsg"></p>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="inputName">Nombre</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Ingrese su nombre"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Mensaje</label>
+                        <textarea class="form-control" id="inputMessage" placeholder="Ingrese su mensaje"></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Modal Pie de Página -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary submitBtn" onclick="EnviarFormulario()">Enviar Ahora</button>
+            </div>
+        </div>
+    </div>
+</div>
     <main>
         <section class="presentation container" id="sobreMi">
             <img src="assets/fran.jpg" class="presentation__picture" alt="">
@@ -140,7 +196,53 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/26e9318051.js" crossorigin="anonymous"></script>
-    
+    <script>
+        function EnviarFormulario(){
+            var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+            var name = $('#inputName').val();
+            var email = $('#inputEmail').val();
+            var message = $('#inputMessage').val();
+            if(name.trim() == '' ){
+                alert('Por Favor ingrese su nombre.');
+                $('#inputName').focus();
+                return false;
+            }else if(email.trim() == '' ){
+                alert('Por favor ingrese su email.');
+                $('#inputEmail').focus();
+                return false;
+            }else if(email.trim() != '' && !reg.test(email)){
+                alert('Por favor ingrese un email valido.');
+                $('#inputEmail').focus();
+                return false;
+            }else if(message.trim() == '' ){
+                alert('Por favor ingrese su mensaje.');
+                $('#inputMessage').focus();
+                return false;
+            }else{
+                $.ajax({
+                    type:'POST',
+                    url:'EnviarForm.php',
+                    data:'ContactoEnviar=1&name='+name+'&email='+email+'&message='+message,
+                    beforeSend: function () {
+                        $('.submitBtn').attr("disabled","disabled");
+                        $('.modal-body').css('opacity', '.5');
+                    },
+                    success:function(msg){
+                        if(msg == 'bien'){
+                            $('#inputName').val('');
+                            $('#inputEmail').val('');
+                            $('#inputMessage').val('');
+                            $('.statusMsg').html('<span style="color:green;">Gracias por contactarnos, nos pondremos en contacto con usted pronto.</p>');
+                        }else{
+                            $('.statusMsg').html('<span style="color:red;">Ha ocurrido algún problema, por favor intente de nuevo.</span>');
+                        }
+                        $('.submitBtn').removeAttr("disabled");
+                        $('.modal-body').css('opacity', '');
+                    }
+                });
+            }
+        }
+        </script>
 
 </body>
 </html>
