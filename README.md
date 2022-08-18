@@ -11,9 +11,6 @@
 
 Hi there, I'm **Franklin O. Cáceres**, a new **Front-End developer**, I'm currently improving my **JavaScript and VueJS skills**.  ðŸ‘¨ðŸ½â€ðŸ’¼. 
 
-  <img align="center" alt="GIF" src="https://geeksgod.com/wp-content/uploads/2020/05/Understanding-of-a-Web-Developer.png" />
-
-<br />
 <br />
 
 **Talking about Personal Stuffs:**
@@ -59,9 +56,8 @@ Hi there, I'm **Franklin O. Cáceres**, a new **Front-End developer**, I'm curre
 ![RohMedina's github stats](https://github-readme-stats.vercel.app/api?username=Franklin2018&show_icons=true&theme=highcontrast)
 
 
-<p align="center">:
-  <img align="center" alt="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=rohmedina.rohmedina" />
-
+<p align="center">
+    <img align="center" alt="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=Franklin2018" />
 </p>
 
 <br />

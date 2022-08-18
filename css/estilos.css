@@ -158,6 +158,9 @@ body{
 .about__picture{
     max-width: 80%;
 }
+.about__picture2{
+    max-width: 100%;
+}
 
 .about__paragraph{
     margin-bottom: 20px;
